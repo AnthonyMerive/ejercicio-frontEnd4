@@ -6,19 +6,26 @@ class Planeta {
         this.tamano = tam;
     }
 }
+
 let arrayPlanetas = [];
+let arrayNombres = [];
 
 let enviar = document.getElementById('enviar');
 let ordenar = document.getElementById('ordenar');
 
 enviar.addEventListener('click', (e) => {
     e.preventDefault();
-    crearPlanetas();  
+    crearPlanetas();
+    console.log(arrayPlanetas);
 })
 
 ordenar.addEventListener('click', (e) => {
     e.preventDefault();
-    ordenarPlanetas();
+    if (arrayPlanetas.length == 0) {
+        alert("no existe arreglo para ordenar")
+    } else {
+        ordenarPlanetas(arrayPlanetas);
+    }
 })
 
 let crearPlanetas = () => {
@@ -36,18 +43,22 @@ let crearPlanetas = () => {
         let tam = document.getElementById(`planetaTam${i}`).value;
 
         let planeta = new Planeta(num, nom, dist, tam);
-                
+
         arrayPlanetas = arrayPlanetas.concat(planeta);
-        // array.push(planeta);
+        // arrayPlanetas.push(planeta);
     }
-    console.log(arrayPlanetas);
+    alert("arreglo creado correctamente")
+    return arrayPlanetas;
 }
 
+let ordenarPlanetas = (planetas) => {
 
-
-// let ordenarPlanetas = (planetas) => {
-
-//     console.log(planetas);
-
-// }
+    for (let i = 0; i <= planetas.length-1; i++) {
+        // console.log(planetas[i].nombre);
+        let nombres = [...planetas[i].nombre]
+        arrayNombres = arrayNombres.concat(nombres);
+    }
+    let NombresOrdenados = arrayNombres.sort();
+    console.log(NombresOrdenados)
+}
 
